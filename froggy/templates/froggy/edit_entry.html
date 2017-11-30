@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% extends "froggy/base.html" %}
+{% block content %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+<html>
+<head>
+	<title>Новый пост</title>
+
+	{% bootstrap_css %}
+	{% bootstrap_javascript %}	
+</head>
+<body id="pad">
+
+	<p><a href="{% url 'froggy:topic' topic.id %}">{{ topic }}</a></p>
+
+	<p>Редактирование:</p>
+	<form action="{% url 'froggy:edit_entry' entry.id %}" method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button name="submit" class="btn btn-primary">Сохранить изменения</button>
+	</form>
+
+</body>
+</html>
+{% endblock content %}

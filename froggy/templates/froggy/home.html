@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% extends "froggy/base.html" %}
+{% block content %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+<style type="text/css">
+	@import url('https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic');
+	#txt {
+		font-family: Lobster;
+		color: maroon;
+		font-size: 31px;
+	}
+</style>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" media="screen">
+	<title>FrogBlog - Home</title>
+
+	{% bootstrap_css %}
+	{% bootstrap_javascript %}
+</head>
+<body id="pad">
+
+	<div background="http://bgrounds.ru/_include/img/bgs/scratch-lines/fawn-scratch-lines.png">
+	<div class="col-lg-6 col-lg-offset-6" id="txt">
+		<h1>Let's begin FrogBlog!</h1>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-lg-offset-2">
+				<img src="{% static "frog1.png" %}" width='300px'>
+			</div>
+		</div>
+	</div>
+	</div>
+
+</body>
+</html>
+{% endblock content %}

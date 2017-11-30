@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% extends "froggy/base.html" %}
+{% block content %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+<style type="text/css">
+	@import url('https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic');
+	#txtx {
+		font-family: Lobster;
+		color: navy;
+		font-size: 19px;
+	}
+</style>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" media="screen">
+	<title>FrogBlog - Topics</title>
+
+	{% bootstrap_css %}
+	{% bootstrap_javascript %}
+</head>
+<body id="pad">
+
+	<p>
+	<div class="media" id="txtx">
+		<a class="pull-left" href="#">
+			<img class="media-object" width="150" src="{% static "frog2.jpg" %}">
+		</a>
+		<div class="media-body">
+			<h2 class="media-heading">Темы</h2>
+			<div>
+				<ul>
+				  	{% for topic in topics %}
+		  				<li>
+		  				  <a href="{% url 'froggy:topic' topic.id %}">{{ topic }}</a>
+		  				</li>
+					{% empty %}
+		  				<li>Здесь еще нет тем...</li>
+					{% endfor %}
+				</ul>
+				<a href="{% url 'froggy:new_topic' %}">Создать новую тему</a>
+			</div>
+		</div>
+	</div>
+	</p>
+
+</body>
+</html>
+{% endblock content %}

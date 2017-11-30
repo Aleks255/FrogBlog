@@ -1,0 +1,28 @@
+{% extends "froggy/base.html" %}
+
+{% block content %}
+
+	<!DOCTYPE html>
+	{% load staticfiles %}
+	{% load bootstrap3 %}
+	<html>
+	<head>
+		<title>registration</title>
+
+	{% bootstrap_css %}
+	{% bootstrap_javascript %}
+	</head>
+	<body id="pad">
+
+		<form method="post" action="{% url 'users:register' %}">
+			{% csrf_token %}
+			{{ form.as_p }}
+
+			<button name="submit" class="btn btn-primary">register</button>
+			<input type="hidden" name="next" value="{% url 'froggy:home' %}">
+		</form>
+	
+	</body>
+	</html>
+
+{% endblock content %}

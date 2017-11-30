@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% extends "froggy/base.html" %}
+{% block content %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+<style type="text/css">
+	@import url('https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic');
+	@import url('https://fonts.googleapis.com/css?family=Alegreya');
+	@import url('https://fonts.googleapis.com/css?family=Neucha');
+	#txt {
+		font-family: Neucha, cursive;
+		color: navy;
+		font-size: 19px;
+	}
+</style>
+<html>
+<head>
+	<title>Тема: {{ topic }}</title>
+
+	{% bootstrap_css %}
+	{% bootstrap_javascript %}
+</head>
+<body id="pad">
+
+	<div id="txt">
+	<p style="font-family: Lobster; color: maroon; font-size: 27px;">{{ topic }}</p>
+
+	<p>
+		<a href="{% url 'froggy:new_entry' topic.id %}">Новый пост</a>
+	</p>
+				
+	<ul>
+	{% for entry in entries %}
+	  <li>
+	  	<p>{{ entry.date_added|date:'M d, Y H:i' }}</p>
+	  	<p>{{ entry.text|linebreaks }}</p>
+	  	<p>
+	  	  <a href="{% url 'froggy:edit_entry' entry.id %}">Редактировать</a>
+	  	</p>
+	  </li>
+	{% empty %}
+	  <li>
+	  	Пока здесь ничего нет...
+	  </li>
+	{% endfor %}
+	</ul>
+	</div>
+</body>
+</html>		
+
+{% endblock content %}
